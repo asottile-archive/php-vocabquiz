@@ -1,0 +1,10 @@
+Gylceradehyde-<img src=sugars/glyceraldehyde.png>;
+Erythrose-<img src=sugars/erythrose.png>;
+Ribose-<img src=sugars/ribose.png>;
+Glucose-<img src=sugars/glucose.png>;
+Mannose-<img src=sugars/mannose.png>;
+Galactose-<img src=sugars/galactose.png>;
+Dihydroxyacetone-<img src=sugars/dihydroxyacetone.png>;
+Erythrulose-<img src=sugars/erythrulose.png>;
+Ribulose-<img src=sugars/ribulose.png>;
+Fructose-<img src=sugars/fructose.png>;

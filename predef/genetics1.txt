@@ -1,0 +1,16 @@
+polymorphism - differences between individuals;
+forward genetics - genetics involving deriving phenotypes from genotypes;
+reverse genetics - genetics involving deriving genotypes from phenotypes;
+parental cross - crossing two parental individuals;
+intercross - crossing two individuals that are siblings;
+backcross - crossing an individual with their parental generation;
+test cross - crossing an unknown individual with a recessive phenotype;
+reciprocal cross - perform pair of crosses with genotypes switched with respect to gender;
+hemizygous - containing only one copy of gene;
+law of segregation - separation of alleles in gamete formation;
+law of independent assortment - separation of different genes on different chromosomes;
+heteroplasmic - contains multiple genotypes in mitochondria/chloroplasts within one cell;
+maternal effects - effects observed in offspring due to mother's RNA/protein;
+maternal inheritance - inheritance of chloroplasts/mitochondria;
+chiasmata - crossing over event;
+recombinant - non#parental type;
