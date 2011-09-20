@@ -1,75 +1,68 @@
 <?
+
+// initialize an variable for scoping
+$fileContents = '';
+
 // Here I check if there a predefined quiz was specified
 // If it was specified, I will just load the quiz from the file
 // Otherwise I expect that the user submitted a custom quiz
 //  in the form of a file upload
-if ($_GET['predef'] != "") {
-    if ($predef == "10_23") {
-        $upload=file_get_contents('predef/Vocab_for_Oct_23.txt');
-    } else if ($predef == "11_13") {
-        $upload=file_get_contents('predef/Vocab_for_Nov_13.txt');
-    } elseif ($predef=="exam1") {
-        $upload=file_get_contents('predef/Exam_Semester_1.txt');
-    } elseif ($predef=="12_15") {
-        $upload=file_get_contents('predef/Vocab_for_Dec_15.txt');
-    } elseif ($predef=="feb_11") {
-        $upload=file_get_contents('predef/Feb_11.txt');
-    } elseif ($predef=="mar_18") {
-        $upload=file_get_contents('predef/March_18.txt');
-    } elseif ($predef=="apr_2") {
-        $upload=file_get_contents('predef/April_2.txt');
-    } elseif ($predef=="exam2") {
-        $upload=file_get_contents('predef/vocab_exam2.txt');
-    } elseif ($predef=="11_14") {
-        $upload=file_get_contents('predef/vocab_quiz_nov_14.txt');
-    } elseif ($predef=="11_14_2") {
-        $upload=file_get_contents('predef/vocab_nov_14_2.txt');
-    } elseif ($predef=="11_27") {
-        $upload=file_get_contents('predef/11_27.txt');
-    } elseif ($predef=="exam11_1") {
-        $upload=file_get_contents('predef/exam11_1.txt');
-    } elseif ($predef=="bioex3_1") {
-        $upload=file_get_contents('predef/bio3_1.txt');
-    } elseif ($predef == "aa") {
-        $upload=file_get_contents('predef/aa.txt');
-    } elseif ($predef== "aa_oneletter") {
-        $upload=file_get_contents('predef/aa_oneletter.txt');
-    } elseif ($predef== "genetics1") {
-        $upload=file_get_contents('predef/genetics1.txt');
-    } elseif ($predef== "sugars") {
-        $upload=file_get_contents('predef/sugars.txt');
-    }
+$preDefined = array(
+    '10_23' => 'Vocab_for_Oct_23.txt',
+    '11_13' => 'Vocab_for_Nov_13.txt',
+    'exam1' => 'Exam_Semester_1.txt',
+    '12_15' => 'Vocab_for_Dec_15.txt',
+    'feb_11' => 'Feb_11.txt',
+    'mar_18' => 'March_18.txt',
+    'apr_2' => 'April_2.txt',
+    'exam2' => 'vocab_exam2.txt',
+    '11_14' => 'vocab_quiz_nov_14.txt',
+    '11_14_2' => 'vocab_nov_14_2.txt',
+    '11_27' => '11_27.txt',
+    'exam11_1' => 'exam11_1.txt',
+    'bioex3_1' => 'bio3_1.txt',
+    'aa' => 'aa.txt',
+    'aa_oneletter' => 'aa_oneletter.txt',
+    'genetics1' => 'genetics1.txt',
+    'sugars' => 'sugars.txt'
+);
+   
+$predef = $_GET['predef'];
+$predefFile = $preDefined[$predef];
+if($predef && $predefFile) {
+    $filename = 'predef/' . $predefFile;
+    $fileContents = file_get_contents($filename);
 } else {
     // Here I am expecting that they uploaded a custom quiz in a text file
-    echo"[Technical Information]<BR>";
+    echo '[Technical Information]<BR>';
     
     // Here I am splitting apart the uploaded filename by the period character
     //  I am attempting to figure out the file extension.
     // If the file extension is not ".txt" then I am exiting, figuring that they attempted
     //  to upload something malicious
     // TODO: Strip HTML from the inputted file, this is currently vulnerable to a HTML based XSS attack
-    $file_name = explode('.', str_replace(" ", "_", basename( $_FILES['fileupload']['name'])));
+    $file_name = explode('.', str_replace(' ', '_', basename($_FILES['fileupload']['name'])));
     $ext = array_pop($file_name);
-    if($ext!="txt") {
+    if($ext != 'txt') {
         die('File Extension Was Not Valid : Expecting txt');
     }
     
     // "Upload" the file by moving it from its temporary location to the "target path"
     $target_path = $_FILES['fileupload']['name'];
     if(move_uploaded_file($_FILES['fileupload']['tmp_name'], $target_path)) {
-        echo "File moved/uploaded successfully<BR>";
+        echo 'File moved/uploaded successfully<BR>';
     } else {
         die('There was an error uploading the file, this file may be too large, please try again!<BR>[/Technical Information]');
     }
     
     // Get the contents of the file so we can build the quiz off of it
-    $upload= file_get_contents($target_path);
+    $fileContents= file_get_contents($target_path);
     
     // Then delete the file, we don't want people's crap sitting around on the server
     if(unlink($target_path)) {
-        echo "File Deleted Successfully<BR>";
+        echo 'File Deleted Successfully<BR>';
     }
-    echo "[/Techincal Information]<BR>";
+    echo '[/Techincal Information]<BR>';
 }
 
 // NOTE: Word/Definition pairs are split by a semicolon ';'
@@ -84,7 +77,7 @@ echo '<form action="answer.php" method="post">';
 //  all separated
 // NOTE: array_pop removes the last entry of an array, I am using this to remove the empty/null
 // entry at the end of the array which is caused by the quiz file ending with a semicolon.
-$parts = explode(';', $upload);
+$parts = explode(';', $fileContents);
 array_pop($parts);
 
 // Here I am going to put the words and definitions into arrays
@@ -94,6 +87,9 @@ array_pop($parts);
 // I could probably avoid this laziness by dynamically creating the $alphabet array, but I'll do
 // that another day
 $wordcount = 0;
+$word = array();
+$def = array();
+$answer = array();
 foreach($parts as $part) {
     // Here I am using explode to split the string by the dash (the separator character I
     //  decided to use to separate the word and the definition)
