@@ -35,6 +35,8 @@ $predefFile = $preDefined[$predef];
 if($predef && $predefFile) {
     $filename = 'predef/' . $predefFile;
     $fileContents = file_get_contents($filename);
+    
+    @file_put_contents('quizViews.txt', $predef."\t".gmdate('Y-m-d\TH:i:s\Z')."\n", FILE_APPEND);
 } else {
     // Here I am expecting that they uploaded a custom quiz in a text file
     echo '[Technical Information]<BR>';
@@ -75,6 +77,10 @@ if($predef && $predefFile) {
 
 // Start Tag for HTML form that will point at the "answer" page
 echo '<form action="answer.php" method="post">';
+
+if($predef && $predefFile) {
+    echo '<input type="hidden" name="predef" value="'.$predef.'">';
+}
 
 // Here I am splitting apart the quiz file by the semicolon so I get the word/definition parts
 //  all separated
