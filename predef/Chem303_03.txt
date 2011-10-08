@@ -1,0 +1,16 @@
+Hemoglobin - 66% of iron;
+Ferritin - 30% of iron;
+Enterocyte - Gut cell for uptake of iron;
+Ferric Reductase - converts iron to Fe2+ to be absorbed;
+Divalent Metal Transporter - channel protein for uptake of metals;
+Ferritin(function) - Stores Iron;
+Ferroportin - Shuttles iron out of cell;
+Hepcidin - controls FPN activity;
+Hephaestin - mononuclear + trinuclear copper ferroxidase;
+Transferrin - Iron transfer protein;
+Ferrihydrite - Compound iron is stored in;
+Siderophores - Bacterial iron binding structures;
+Denticity - binding count for a ligand;
+Binding Constant - equilibrium constant for binding equilibrium;
+Hemoglobin(function) - For oxygen transfer;
+Myoglobin(function) - For oxygen storage;

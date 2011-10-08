@@ -24,7 +24,10 @@ $preDefined = array(
     'aa' => 'aa.txt',
     'aa_oneletter' => 'aa_oneletter.txt',
     'genetics1' => 'genetics1.txt',
-    'sugars' => 'sugars.txt'
+    'sugars' => 'sugars.txt',
+    'chem303_01' => 'Chem303_01.txt',
+    'chem303_02' => 'Chem303_02.txt',
+    'chem303_03' => 'Chem303_03.txt'
 );
    
 $predef = $_GET['predef'];

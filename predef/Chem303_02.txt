@@ -1,0 +1,17 @@
+Symmetry Element - reference group/type of rotations/mirrors/etc. for symmetry;
+Symmetry Operation - an application of a rotation/mirror/etc. for symmetry;
+Point Group - All symmetry operations of a certain molecule;
+Irreducible Representation - Row in character table which represents the way a part of a point group can behave;
+Order - Number of distinct symmetry operations for a point group;
+Classes - Type of symmetry operations in a character table;
+10Dq - Splitting between d orbitals;
+Low#Spin - High splitting 10Dq leading to aufbau prediction (electrons paired in lower state);
+High#Spin - Low splitting 10Dq leading to hundt prediction (electrons unpaired in both states);
+Strong ligand - ligand with high 10Dq splitting;
+Weak ligand - ligand with low 10Dq splitting;
+Backbonding - situation where ligand is pi acceptor leading to a stronger ligand;
+Pearson Acid/Base - Acid/Base similar to Lewis acid/base, only quantifies based on charge density;
+Hard Acid - Small molecule with a dense positive charge or electrophilic character;
+Hard Base - Small molecule with a dense negative charge or nucleophilic character;
+Soft Acid - Larger molecule with a less dense positive charge or electrophilic character;
+Soft Base - Larger molecule with a less dense negative charge or nucleophilic character;
