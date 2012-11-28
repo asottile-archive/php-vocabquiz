@@ -30,18 +30,18 @@ $preDefined = array(
     'chem303_03' => 'Chem303_03.txt',
     'chem303_02_01' => 'Chem303Ex2_01.txt'
 );
-   
+
 $predef = $_GET['predef'];
 $predefFile = $preDefined[$predef];
 if($predef && $predefFile) {
     $filename = 'predef/' . $predefFile;
     $fileContents = file_get_contents($filename);
-    
+
     @file_put_contents('quizViews.txt', $predef."\t".gmdate('Y-m-d\TH:i:s\Z')."\n", FILE_APPEND);
 } else {
     // Here I am expecting that they uploaded a custom quiz in a text file
     echo '[Technical Information]<BR>';
-    
+
     // Here I am splitting apart the uploaded filename by the period character
     //  I am attempting to figure out the file extension.
     // If the file extension is not ".txt" then I am exiting, figuring that they attempted
@@ -52,7 +52,7 @@ if($predef && $predefFile) {
     if($ext != 'txt') {
         die('File Extension Was Not Valid : Expecting txt');
     }
-    
+
     // "Upload" the file by moving it from its temporary location to the "target path"
     $target_path = $_FILES['fileupload']['name'];
     if(move_uploaded_file($_FILES['fileupload']['tmp_name'], $target_path)) {
@@ -60,10 +60,10 @@ if($predef && $predefFile) {
     } else {
         die('There was an error uploading the file, this file may be too large, please try again!<BR>[/Technical Information]');
     }
-    
+
     // Get the contents of the file so we can build the quiz off of it
     $fileContents= file_get_contents($target_path);
-    
+
     // Then delete the file, we don't want people's crap sitting around on the server
     if(unlink($target_path)) {
         echo 'File Deleted Successfully<BR>';
@@ -112,7 +112,7 @@ if($wordcount > 78) { // I'm a lazyass
     die("The programmer was too lazy to write the program to accomadate more than seventy-eight words... go yell at them");
 }
 
-// $def is the definition array, I'm copying it to $tempdef so I can shuffle it 
+// $def is the definition array, I'm copying it to $tempdef so I can shuffle it
 // $word is the word array, I'm copying it to $tempword so I can shuffle it aswell
 $tempdef = $def;
 shuffle($tempdef);
@@ -130,11 +130,11 @@ for($i = 1; $i <= $wordcount; $i++) {
 
     // $origwordpos will find the position of the current word inside the shuffled $tempword array
     $origwordpos = array_search($tempword[($i-1)], $word);
-    
+
     // $tempdefpos will find the position of the matching definition in the shuffled definitions
     $tempdefpos = array_keys($tempdef, $def[$origwordpos]);
     $tempdefpos = $tempdefpos[0];
-    
+
     // Then assign the answer for that word as the corresponding letter from the temp array
     $answer[$i] = $alphabet[$tempdefpos];
 }

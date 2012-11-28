@@ -22,8 +22,8 @@ foreach($post as $key => $value) {
 // Print out the users choices
 echo"Your Choices:<BR><BR>";
 foreach ($userchoice as $questionnum => $theanswer) {
-    echo $questionnum.") ".$word[$questionnum]." - ".$theanswer.") ".$def[$theanswer];    
-    // If the user did not answer correctly then tell them they screwed up and    
+    echo $questionnum.") ".$word[$questionnum]." - ".$theanswer.") ".$def[$theanswer];
+    // If the user did not answer correctly then tell them they screwed up and
     //  tell them the correct answer in red
     if($theanswer != $answer[$questionnum]) {
         echo "&nbsp;<span style=\"background-color:#f00;\"><b>INCORRECT ANSWER</b> correct answer was ".$answer[$questionnum]." -> ".$def[$answer[$questionnum]]."</span>";
