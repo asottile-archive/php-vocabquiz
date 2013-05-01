@@ -6,4 +6,14 @@ encapsulation - protect implementation from interface;
 fat interface - base class has many more virtual functions than any derived class will implement;
 downcast - casting from base class to derived class;
 upcast - casting from derived class to base class;
-
+suicide object - delete this;
+construction order - bottom up;
+destruction order - top down;
+factory - class which insulates client from object creation;
+mixin - object inherted from purely for functionality, usually multiple inherited;
+cross#cast - casting from one base class to a different base class (when multiple inherited);
+virtual inheritance - a solution to diamond inheritance;
+RTTI - runtime information about a type;
+unchecked cast - static_cast;
+checked cast - dynamic_cast;
+capability class - class which can be casted to to determine features of an object;
