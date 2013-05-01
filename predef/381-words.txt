@@ -1,0 +1,9 @@
+non#virtual inheritance pattern - Using a ordinary method in an interface to make a virtual call;
+abstract base class - class with at least one pure virtual function;
+interface class - class that provides only only an interface that will be used polymorphically;
+abstraction - separating implementation from interface;
+encapsulation - protect implementation from interface;
+fat interface - base class has many more virtual functions than any derived class will implement;
+downcast - casting from base class to derived class;
+upcast - casting from derived class to base class;
+

@@ -28,12 +28,13 @@ $preDefined = array(
     'chem303_01' => 'Chem303_01.txt',
     'chem303_02' => 'Chem303_02.txt',
     'chem303_03' => 'Chem303_03.txt',
-    'chem303_02_01' => 'Chem303Ex2_01.txt'
+    'chem303_02_01' => 'Chem303Ex2_01.txt',
+	'eecs381' => '381-words.txt'
 );
 
 $predef = $_GET['predef'];
 $predefFile = $preDefined[$predef];
-if($predef && $predefFile) {
+if ($predef && $predefFile) {
     $filename = 'predef/' . $predefFile;
     $fileContents = file_get_contents($filename);
 
@@ -49,13 +50,13 @@ if($predef && $predefFile) {
     // TODO: Strip HTML from the inputted file, this is currently vulnerable to a HTML based XSS attack
     $file_name = explode('.', str_replace(' ', '_', basename($_FILES['fileupload']['name'])));
     $ext = array_pop($file_name);
-    if($ext != 'txt') {
+    if ($ext != 'txt') {
         die('File Extension Was Not Valid : Expecting txt');
     }
 
     // "Upload" the file by moving it from its temporary location to the "target path"
     $target_path = $_FILES['fileupload']['name'];
-    if(move_uploaded_file($_FILES['fileupload']['tmp_name'], $target_path)) {
+    if (move_uploaded_file($_FILES['fileupload']['tmp_name'], $target_path)) {
         echo 'File moved/uploaded successfully<BR>';
     } else {
         die('There was an error uploading the file, this file may be too large, please try again!<BR>[/Technical Information]');
@@ -65,7 +66,7 @@ if($predef && $predefFile) {
     $fileContents= file_get_contents($target_path);
 
     // Then delete the file, we don't want people's crap sitting around on the server
-    if(unlink($target_path)) {
+    if (unlink($target_path)) {
         echo 'File Deleted Successfully<BR>';
     }
     echo '[/Techincal Information]<BR>';
@@ -79,7 +80,7 @@ if($predef && $predefFile) {
 // Start Tag for HTML form that will point at the "answer" page
 echo '<form action="answer.php" method="post">';
 
-if($predef && $predefFile) {
+if ($predef && $predefFile) {
     echo '<input type="hidden" name="predef" value="'.$predef.'">';
 }
 
@@ -100,7 +101,7 @@ $wordcount = 0;
 $word = array();
 $def = array();
 $answer = array();
-foreach($parts as $part) {
+foreach ($parts as $part) {
     // Here I am using explode to split the string by the dash (the separator character I
     //  decided to use to separate the word and the definition)
     $tempword = explode('-', $part);
@@ -126,7 +127,7 @@ shuffle($tempword);
 $alphabet=array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','AA','BB','CC','DD','EE','FF','GG','HH','II','JJ','KK','LL','MM','NN','OO','PP','QQ','RR','SS','TT','UU','VV','WW','XX','YY','ZZ','AAA','BBB','CCC','DDD','EEE','FFF','GGG','HHH','III','JJJ','KKK','LLL','MMM','NNN','OOO','PPP','QQQ','RRR','SSS','TTT','UUU','VVV','WWW','XXX','YYY','ZZZ');
 
 // Here I am looping through each of the words (After shuffling)\
-for($i = 1; $i <= $wordcount; $i++) {
+for ($i = 1; $i <= $wordcount; $i++) {
 
     // $origwordpos will find the position of the current word inside the shuffled $tempword array
     $origwordpos = array_search($tempword[($i-1)], $word);
@@ -144,7 +145,7 @@ for($i = 1; $i <= $wordcount; $i++) {
 //  they wanted the answers.  But since this wasn't intended as a "grading" tool and as more of a
 //  study tool I didn't go through the trouble of parsing the answers to either a cookie or a server-
 //  side text file which would ensure the client would not be able to cheat.
-for($i = 1; $i <= $wordcount; $i++) {
+for ($i = 1; $i <= $wordcount; $i++) {
     echo "<input type=\"hidden\" name=\"word".($i)."\" value=\"".$tempword[$i-1]."\">";
     echo "<input type=\"hidden\" name=\"def".$alphabet[$i-1]."\" value=\"".$tempdef[$i-1]."\">";
     echo "<input type=\"hidden\" name=\"answer".$i."\" value=\"".$answer[$i]."\">";
@@ -162,13 +163,13 @@ for($i = 1; $i <= $wordcount; $i++) {
 
 // Here I prepare the dropdown "option" values
 // basically I have an <option> tag for each of the alphabet options that there are words for
-for($j = 1; $j <= $wordcount; $j++) {
+for ($j = 1; $j <= $wordcount; $j++) {
     $dropdownvalues .= "<option value=\"".$alphabet[$j-1]."\">".$alphabet[$j-1]."</option>";
 }
 
 // Now I am going to echo dropdown boxes for each of the words
 $i = 0;
-foreach($tempword as $theword) {
+foreach ($tempword as $theword) {
     echo "<select name=\"question".($i+1)."\">";
     echo $dropdownvalues;
     echo "</select> ";
@@ -182,7 +183,7 @@ foreach($tempword as $theword) {
 
 // Now I print out the answer options
 $i = 0;
-foreach($tempdef as $thedef) {
+foreach ($tempdef as $thedef) {
     echo $alphabet[$i].") ";
     echo $thedef."<BR>";
     $i++;
