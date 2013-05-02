@@ -7,8 +7,8 @@ fat interface - base class has many more virtual functions than any derived clas
 downcast - casting from base class to derived class;
 upcast - casting from derived class to base class;
 suicide object - delete this;
-construction order - bottom up;
-destruction order - top down;
+construction order - top down;
+destruction order - bottom up;
 factory - class which insulates client from object creation;
 mixin - object inherted from purely for functionality, usually multiple inherited;
 cross#cast - casting from one base class to a different base class (when multiple inherited);

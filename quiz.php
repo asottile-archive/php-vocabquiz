@@ -29,7 +29,8 @@ $preDefined = array(
     'chem303_02' => 'Chem303_02.txt',
     'chem303_03' => 'Chem303_03.txt',
     'chem303_02_01' => 'Chem303Ex2_01.txt',
-	'eecs381' => '381-words.txt'
+	'eecs381' => '381-words.txt',
+	'eecs381-patterns' => '381-patterns.txt'
 );
 
 $predef = $_GET['predef'];

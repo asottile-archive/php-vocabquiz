@@ -55,5 +55,6 @@ The resulting page will be matching...
 <a href="quiz.php?predef=chem303_03">CHEM 303 - Roles of Iron</a><br>
 <a href="quiz.php?predef=chem303_02_01">CHEM 303 - Iron, Copper, etc.</a><br><br>
 <a href="quiz.php?predef=eecs381">EECS 381 Final Words</a><br>
+<a href="quiz.php?predef=eecs381-patterns">EECS 381 Final Design Patterns</a><br>
 </body>
 </html>

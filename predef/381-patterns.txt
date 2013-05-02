@@ -1,0 +1,23 @@
+mixin - object inherted from purely for functionality, usually multiple inherited;
+fat interface - base class has many more virtual functions than any derived class will implement;
+factory - class which insulates client from object creation;
+singleton - unique globally accessible object;
+named constructor - Control how an object is created (ex: on heap);
+virtual constructor - Often a clone method;
+abstract factory - pattern to construct objects from multiple families;
+wrapper - provide a better interface for a functionality;
+facade - wrap an entire system of classes in a single interface;
+adapter - wrap a class that allows a specific object to be used to satisfy a specific interface;
+compiler firewall - hides complete implementation of a class from header file and consumers;
+composite - allows for delegation of calls to a tree of objects;
+flyweight - package of functionality without references to external data;
+forest of trees - multiple inheritance to allow for combinations of bases;
+observer - attach and detach and notify updates to these objects;
+state pattern - used to eliminate switching on state;
+strategy pattern - used for faster lookup time for changing algorithmic approach at runtime;
+template pattern - enforces ordering for derived classes in a method flow;
+memento - object for serializing and deserializing state;
+chain of responsibility - often used to handle bubbling of events;
+command - stores information about an action request abstracted in a class;
+multiple dispatch - calling code which depends on multiple types to be handled correctly;
+
