@@ -164,8 +164,9 @@ for ($i = 1; $i <= $wordcount; $i++) {
 
 // Here I prepare the dropdown "option" values
 // basically I have an <option> tag for each of the alphabet options that there are words for
+$dropdownvalues = '<option value="">-</option>';
 for ($j = 1; $j <= $wordcount; $j++) {
-    $dropdownvalues .= "<option value=\"".$alphabet[$j-1]."\">".$alphabet[$j-1]."</option>";
+    $dropdownvalues .= '<option value="'.$alphabet[$j-1].'" style="background-color: #ffc;">'.$alphabet[$j-1].'</option>';
 }
 
 // Now I am going to echo dropdown boxes for each of the words
